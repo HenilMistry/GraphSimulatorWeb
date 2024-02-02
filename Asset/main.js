@@ -61,9 +61,8 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
 
-  // c.fillStyle = "Red";
-  // c.fillRect(0,0,canvas.width, canvas.height);
-
+  c.fillStyle = "Red";
+  c.fillRect(0,0,canvas.width, canvas.height);
   // objects.forEach(object => {
   //  object.update()
   // })
