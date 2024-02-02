@@ -5,7 +5,7 @@ const Tools = Object.freeze({
 });
 
 // A variable to keep track of active, slected tool 
-ActiveTool = null;
+var ActiveTool = null;
 // A variable, that is HTML Element, that is contianing information text 
 const label_info = document.getElementById("label_info");
 
@@ -25,7 +25,6 @@ function selectTool(name) {
         default:
             ActiveTool = null;
             label_info.innerHTML = "Select some tool to start making Graph!";
-            alert("Some Error Occured While Selecting The Tool!");
             break;
     }
 }
