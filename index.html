@@ -7,7 +7,7 @@
          <!-- TOP PANEL -->
          <div id="panel_top">
             <div><img src="./Asset/Images/icon_info.png" alt="Icon_Info"></div>
-            <div>Select some tool to start making Graph!</div>
+            <div id="label_info">Select some tool to start making Graph!</div>
         </div>
         <!-- TOP PANEL ENDS HERE -->
 
@@ -15,7 +15,47 @@
 
         <!-- TOOL AND CONFIG PANEL STARTS  -->
         <div id="panel_parent">
-            
+            <div id="panel_tools">
+                <!-- Container for Tools Menu -->
+                <div class="container_menu">
+                    <div class="container_menu_title"><h1>Tools:</h1></div>
+                    <!-- Container for Three Elements Only -->
+                    <div class="container_tool">
+                        <!-- NOTE : The function should use the string that are mentioned in toolManager.js to call selectTool function -->
+                        <div class="item_tool">
+                            <div class="item_tool_icon"><img src="./Asset/Images/icon_node.png" alt="icon_node" onclick='selectTool("Node")''></div>
+                            <div class="item_tool_name">Node Tool</div>
+                        </div>
+                        <div class="item_tool">
+                            <div class="item_tool_icon"><img src="./Asset/Images/icon_udEdge.png" alt="icon_node" onclick='selectTool("UdEdge")''></div>
+                            <div class="item_tool_name">Undirected Edge</div>
+                        </div>
+                        <div class="item_tool">
+                            <div class="item_tool_icon"><img src="./Asset/Images/icon_udEdge.png" alt="icon_node" onclick='selectTool("WeEdge")''></div>
+                            <div class="item_tool_name">Weighted Edge</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container for Tools Ends -->
+
+                <!-- Container for Simulations Menu -->
+                <div class="container_menu">
+                    <div class="container_menu_title"><h1>Simulations:</h1></div>
+                    <!-- Container for Three Elements Only -->
+                    <div class="container_tool">
+                        <div class="item_tool">
+                            <button>Matrix Formation</button>
+                        </div>
+                        <div class="item_tool">
+                            <button>Prims Algorithm</button>
+                        </div>
+                        <div class="item_tool">
+                            <button>Kruskal's Algorithm</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container for Simulations Ends -->
+            </div>
         </div>
         <!-- TOOL AND CONFIG PANEL ENDS  -->
 
@@ -27,5 +67,6 @@
         </canvas>
         <!-- CANVAS ENDS HERE  -->
     </body>
+    <script src="./Asset/Scripts/toolManager.js"></script>
     <script src="./Asset/main.js"></script>
 </html>
