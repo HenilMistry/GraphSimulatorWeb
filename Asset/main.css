@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    opacity: 0;
+}
+
+/* This panel, that contains the tool and configuration options */
+#panel_parent {
+    /* border, Just for testing */
+    /* border: 2px solid blue; */
+    position: absolute;
+    top: 0%;
+    left: 80%;
+    width: 20%;
+    height: 100%;
+    background-color: antiquewhite;
+}
+
+/* The panel that contains the icon_info and information label */
+#panel_top {
+    margin: 0;
+    /* border, Just for testing */
+    /* border: 2px solid red; */
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 80%;
+    height: 5%;
+    background-color: wheat;
+    display: flex;
+    overflow: hidden;
+}
+
+/* The Lable that displays some kind of information */
+#panel_top :nth-child(2) {
+    margin: auto;
+    padding: 10 0 10 0;
+    margin-left: 0;
+    /* bg color, Just for testing */
+    /* background-color: brown;  */
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+/* The image that shows the info icon */
+#panel_top :nth-child(1) {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+#panel_top img {
+    width: 50px;
+    height: 50px;
+}

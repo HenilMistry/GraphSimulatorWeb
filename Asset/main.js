@@ -1,15 +1,8 @@
-/*!
- * Created by Canvas Dojo <https://github.com/znxkznxk1030/canvas-dojo>
- *
- * canvas-boilerplate by <https://github.com/christopher4lis/canvas-boilerplate>
- * Learn more https://chriscourses.com/
- */
-
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight;
 
 const mouse = {
   x: innerWidth / 2,
@@ -68,7 +61,9 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
 
-  
+  // c.fillStyle = "Red";
+  // c.fillRect(0,0,canvas.width, canvas.height);
+
   // objects.forEach(object => {
   //  object.update()
   // })
