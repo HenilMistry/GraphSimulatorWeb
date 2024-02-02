@@ -57,3 +57,50 @@
     width: 50px;
     height: 50px;
 }
+
+/* A Class that contains the tool icon it's name */
+.item_tool {
+    margin: auto;
+    display: inline-block;
+    /* Border is just for testing */
+    /* border: 2px solid black; */
+    min-height: 120px;
+    min-width: 120px;
+}
+.item_tool_icon {
+    /* Border is Just for testing */
+    /* border: 2px solid green; */
+    text-align: center; /* This sets my image icon to be in center */
+
+}
+.item_tool_icon:hover {
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+    box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+}
+.item_tool_icon img {
+    max-width: 120px;
+    max-height: 120px;
+    width: 100px;
+    height: 100px;
+    /* Border is just for testing */
+    /* border: 2px solid goldenrod; */
+}
+.item_tool_name {
+    /* border is Just for testing */
+    /* border: 2px solid red; */
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* The container for storing a row of tools inside container menu */
+.container_tool {
+    /* Border is just for testing */
+    /* border: 2px solid red; */
+    text-align: center;
+    margin: auto;
+    padding: 10 0 10 0;
+}
