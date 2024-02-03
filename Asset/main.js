@@ -12,18 +12,25 @@ let Nodes = [];
 let UdEdges = [];
 let click = 0;
 let firstNode = -1;
+let NodeToolActivated = 0;
 
 const colors = ["#2185C5", "#7ECEFD", "#FFF6E5", "#FF7F66"];
 
 // Event Listeners
+// What to do when mouse is clicked...
 addEventListener("click", (event) => {
   mouse.x = event.clientX;
   mouse.y = event.clientY;
   // Console lines are just for testing 
   // console.log("MOUSE x:"+mouse.x+" y:"+mouse.y);
+
   if(ActiveTool == Tools.NODE) {
-    Nodes.push(new Node(mouse.x,mouse.y,20,"Red",c));
-    console.log(Nodes);
+    if(NodeToolActivated != 1) {
+      Nodes.push(new Node(Nodes.length,mouse.x,mouse.y,20,"Red",c));
+    }
+    NodeToolActivated = 0;
+
+    // console.log(Nodes);
   } else if(ActiveTool == Tools.UndirectedEdge) {
     if(Nodes.length > 0) {
       Nodes.forEach((node, index) => {
@@ -81,6 +88,16 @@ function animate() {
 init();
 animate();
 
+/**
+ * This function will find the distance between two coordinates in
+ * 2D Plane. Provided their coordinates. Point A (x1,y1) and Point B (x2,y2) 
+ * It returns the distance in Floating value!
+ * @param {*} x1 : x coordinate of point A
+ * @param {*} y1 : y coordinate of point A
+ * @param {*} x2 : x cordinate of point B
+ * @param {*} y2 : y coordinate of point B
+ * @returns 
+ */
 function distance(x1, y1, x2, y2) {
   const xDist = x2 - x1;
   const yDist = y2 - y1;
