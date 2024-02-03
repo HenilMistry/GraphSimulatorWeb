@@ -14,6 +14,7 @@ function selectTool(name) {
     switch(name) {
         case Tools.NODE:
             ActiveTool=Tools.NODE;
+            NodeToolActivated = 1;
             label_info.innerHTML = "Selected Node Tool : Now, click anywhere on canvas to add node!";
             break;
         
