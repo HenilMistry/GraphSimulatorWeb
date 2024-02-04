@@ -9,6 +9,7 @@ class EdgeHelper {
 
     draw() {
         this.c.beginPath();
+        this.c.setLineDash([]);
         this.c.strokeStyle = "Black";
         this.c.lineWidth = 5;
         this.c.moveTo(this.a.x,this.a.y);
