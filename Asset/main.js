@@ -10,11 +10,16 @@ const mouse = {
 };
 let Nodes = [];
 let UdEdges = [];
+let WeEdges = [];
 let click = 0;
 let firstNode = -1;
+let secondNode = null;
 let NodeToolActivated = 0;
 
 const colors = ["#2185C5", "#7ECEFD", "#FFF6E5", "#FF7F66"];
+
+// Just for testing..
+// WeEdges.push(new WeightedEdge(new Node(10,10,100,20,"Red",c),new Node(10,100,100,20,"Red",c),"5",c));
 
 // Event Listeners
 // What to do when mouse is clicked...
@@ -53,6 +58,27 @@ addEventListener("click", (event) => {
       selectTool("None");
     }
     console.log(UdEdges);
+  } else if(ActiveTool == Tools.WeightedEdge) {
+    if(Nodes.length > 0) {
+      Nodes.forEach((node, index) => {
+        if(distance(node.x,node.y,mouse.x,mouse.y) <= node.radius) {
+          // Just for testing...
+          // console.log("Collision with "+index);
+          click++;
+          if(click%2==0) {
+            // it means it's a second click..
+            secondNode = node;
+            openWeightedModal();
+            click = 0;
+          } else {
+            firstNode = node;
+          }
+        }
+      });
+    } else {
+      alert("No nodes are on the Canvas!");
+      selectTool("None");
+    }
   }
 });
 
@@ -88,6 +114,11 @@ function animate() {
     edge.update();
   });
 
+  // Rendering all the weighted edges on the canvas 
+  WeEdges.forEach((edge) => {
+    edge.update();
+  });
+
   // Rendering all nodes on the canvas 
   Nodes.forEach((node)=>{
     node.update();
@@ -102,7 +133,11 @@ function animate() {
     c.lineWidth = 5;
     c.setLineDash([5, 5]);
     c.moveTo(firstNode.x, firstNode.y);
-    c.lineTo(mouse.x,mouse.y);
+    if(secondNode!=null) {
+      c.lineTo(secondNode.x,secondNode.y);
+    } else {
+      c.lineTo(mouse.x,mouse.y);
+    }
     c.stroke();
     c.closePath();
   }
