@@ -56,11 +56,20 @@ addEventListener("click", (event) => {
   }
 });
 
+// What to do when window is resized 
 addEventListener("resize", () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 
   init();
+});
+
+// What to do when mousemove event is occurred 
+addEventListener("mousemove",(e)=>{
+  // console lines are just for testing 
+  // console.log(e.x+" "+e.y);
+  mouse.x = e.x;
+  mouse.y = e.y;
 });
 
 // Implementation
@@ -83,6 +92,20 @@ function animate() {
   Nodes.forEach((node)=>{
     node.update();
   });
+
+  // Rendering the reference edge...
+  if(firstNode!=null) {
+    // console lines are just for testing 
+    // console.log("Drawing ref. line");
+    c.beginPath();
+    c.strokeStyle = "green";
+    c.lineWidth = 5;
+    c.setLineDash([5, 5]);
+    c.moveTo(firstNode.x, firstNode.y);
+    c.lineTo(mouse.x,mouse.y);
+    c.stroke();
+    c.closePath();
+  }
 }
 
 init();
