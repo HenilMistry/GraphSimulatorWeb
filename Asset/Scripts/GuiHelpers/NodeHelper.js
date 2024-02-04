@@ -12,11 +12,11 @@ class Node {
     draw() {
         this.c.beginPath();
         this.c.font = 'italic 18px Arial';
-        this.c.fillStyle = "Black";
-        this.c.fillText(this.label,this.x-(this.radius),this.y-(this.radius));
-        this.c.arc(this.x,this.y,this.radius,Math.PI*2,false);
         this.c.fillStyle = this.color;
+        this.c.arc(this.x,this.y,this.radius,Math.PI*2,false);
         this.c.fill();
+        this.c.fillStyle = "Black";
+        this.c.fillText(this.label,this.x,this.y);
         this.c.closePath();
     }
 
