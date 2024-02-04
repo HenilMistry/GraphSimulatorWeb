@@ -1,4 +1,7 @@
-// This script contains the information about how to create and show matrix 
+/**
+ * This script contains the information about how to create and show matrix 
+ * Created some of the functions that will help into that.
+ */
 
 // get the nodes from the node list
 var nodes = Nodes.length; // From main.js script
@@ -7,6 +10,10 @@ var nodes = Nodes.length; // From main.js script
 const bModel = new bootstrap.Modal('#matModal');
 const matModelBody = document.getElementById('matModalBody');
 
+/**
+ * This function will form the matrix,
+ * According to present nodes and edges.
+ */
 function formMatrix() {
     // check for availability of nodes...
     if(getNodes() == 0) {
