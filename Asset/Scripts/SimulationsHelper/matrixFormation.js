@@ -20,6 +20,7 @@ function formMatrix() {
         alert("There are no nodes on the canvas!");
     } else { // generate the marix in form of table..    
         let matrix = getUdMatrix();
+        // TODO: print the matrix in user redable formate ...
         // clear previous result..
         matModelBody.innerHTML = "";
         // show it in form of table...
@@ -29,6 +30,16 @@ function formMatrix() {
             }
             matModelBody.innerHTML += "<br>";
         }
+        matModelBody.innerHTML += "<br>";
+        matrix = getWeMatrix();
+        // show it in form of table...
+        for(var i=0; i<matrix.length; i++) {
+            for(var j=0; j<matrix[i].length; j++) {
+                matModelBody.innerHTML += matrix[i][j]+"\t";
+            }
+            matModelBody.innerHTML += "<br>";
+        }
+        // TODO: print the matrix in user redable formate ... (ENDS)
         bModel.show();
     }
 }
@@ -74,5 +85,33 @@ function getUdMatrix() {
         matrix[edge.b.label][edge.a.label] = '1';
     });
     // console.log(matrix);
+    return matrix;
+}
+
+/**
+ * This function will returns the matrix form of the graph!
+ * This will consider all weighted edges.
+ * @returns matrix of Directed Graph
+ */
+function getWeMatrix() {
+    // console lines are just for debugging... 
+    var matrix = [];
+    // init matrix...
+    for(var i=0; i<getNodes(); i++) {
+        var temp_row = [];
+        for(var j=0; j<nodes; j++) {
+            temp_row[j] = '0';
+        }
+        matrix[i] = temp_row;
+    }
+    console.log(matrix);
+
+    // forming the matix 
+    WeEdges.forEach((edge) => {
+        matrix[edge.a.label][edge.b.label] = edge.weight;
+        matrix[edge.b.label][edge.a.label] = edge.weight;
+    });
+    console.log(matrix);
+
     return matrix;
 }
