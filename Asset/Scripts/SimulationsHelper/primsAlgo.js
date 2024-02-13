@@ -45,7 +45,7 @@ function applyPrims() {
             // console.log( mstSet[v] == false);
             // console.log(Number(weightedGraphMatrix[u][v]) < Number(key[v]));
             if(weightedGraphMatrix[u][v] != 0 && mstSet[v] == false && Number(weightedGraphMatrix[u][v]) < Number(key[v])) {
-                console.log("Updating tree");
+                // console.log("Updating tree");
                 tree[v] = u;
                 key[v] = weightedGraphMatrix[u][v];
             }
@@ -57,6 +57,12 @@ function applyPrims() {
     printPrimsMST(tree, weightedGraphMatrix);
 }
 
+/**
+ * This function will print the Prims's MST 
+ * and it will take tree and matrix as input
+ * @param {*} tree 
+ * @param {*} matrix 
+ */
 function printPrimsMST(tree, matrix) {
     // TODO: Make some animation over here...
     console.log("Edge \tWeight");
