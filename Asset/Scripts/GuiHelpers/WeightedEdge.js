@@ -19,7 +19,20 @@ class WeightedEdge extends EdgeHelper {
         this.c.closePath();
     }
 
+    /**
+     * This function will animate the edge color.
+     * @param {*} stokeColor 
+     */
+    animate(stokeColor) {
+        this.strokeColor = stokeColor;
+        this.draw();
+    }
+
     update() {
         this.draw();
+    }
+
+    paint(stokeColor) {
+        this.animate(stokeColor);
     }
 }
