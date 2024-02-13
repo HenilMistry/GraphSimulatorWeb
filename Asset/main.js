@@ -11,10 +11,15 @@ const mouse = {
 let Nodes = [];
 let UdEdges = [];
 let WeEdges = [];
+let animationEdges = [];
+let animationNodes = [];
 let click = 0;
 let firstNode = -1;
 let secondNode = null;
 let NodeToolActivated = 0;
+let animationFrames = 0;
+let animate = false;
+let animationSettings = {};
 
 const colors = ["#2185C5", "#7ECEFD", "#FFF6E5", "#FF7F66"];
 
@@ -98,6 +103,15 @@ addEventListener("mousemove",(e)=>{
   mouse.y = e.y;
 });
 
+addEventListener("keydown",(e) => {
+  // console.log(e.keyCode);
+  // 27=Esc Key...
+  if(e.keyCode==27) {
+    // unselect active tool...
+    selectTool("None");
+  }
+});
+
 // Implementation
 let objects;
 function init() {
@@ -105,8 +119,8 @@ function init() {
 }
 
 // Animation Loop
-function animate() {
-  requestAnimationFrame(animate);
+function animationLoop() {
+  requestAnimationFrame(animationLoop);
   c.clearRect(0, 0, canvas.width, canvas.height);
 
   // Rendering all the UdEdges. Edges on the canvas 
@@ -123,6 +137,36 @@ function animate() {
   Nodes.forEach((node)=>{
     node.update();
   });
+
+  if(animate) {
+    // setting active tool to null 
+    ActiveTool = null;
+    // console.log("frames : "+animationFrames);
+    animationFrames++;
+    // animation for kruskals algorithm...
+    if(animationSettings.animation=="Kruskals") {
+      // change to next step of animation...
+      if(animationFrames%(animationSettings.stepDelay)==0) {
+          animationSettings.edgeIndex++;
+          if(animationSettings.edgeIndex > animationEdges.length-1) {
+            animationSettings.edgeIndex = 0;
+            animationSettings.nodeIndex = 0;
+            animationSettings.colorIndex = 0;
+            label_info.innerHTML = "Kruskal's Algorithm : Animation Completed, Press the button to start again!";
+            animate = false;
+          }
+      }
+      // change to next blink phase...
+      if(animationFrames%(animationSettings.blinkingDelay)==0) {
+        animationSettings.colorIndex++;
+      }
+      // animate the things on canvas...
+      if(animate) {
+        animationEdges[animationSettings.edgeIndex].paint(((animationSettings.colorIndex%2)?("Red"):("Black")));
+        label_info.innerHTML = "Kruskal's Algorithm : Selecting Edge "+animationEdges[animationSettings.edgeIndex].a.label+"--"+animationEdges[animationSettings.edgeIndex].b.label+" with edge weight : "+animationEdges[animationSettings.edgeIndex].weight;
+      }
+    }
+  }
 
   // Rendering the reference edge...
   if(firstNode!=null) {
@@ -144,7 +188,7 @@ function animate() {
 }
 
 init();
-animate();
+animationLoop();
 
 /**
  * This function will find the distance between two coordinates in
