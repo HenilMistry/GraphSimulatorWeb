@@ -18,7 +18,8 @@ function closeWeightModal() {
             WeEdges.push(new WeightedEdge(firstNode,secondNode,1,c));
             firstNode = null;
             secondNode = null;
-            weModal.hide();    
+            weModal.hide();
+            edgeWeightField.value = "";
         }
     } else {
         if(!checkForWeightValue()) {
@@ -28,6 +29,7 @@ function closeWeightModal() {
             firstNode = null;
             secondNode = null;
             weModal.hide();
+            edgeWeightField.value = "";
         }
     }
 }
