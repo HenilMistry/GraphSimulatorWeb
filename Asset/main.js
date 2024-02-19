@@ -154,6 +154,8 @@ function animationLoop() {
             animationSettings.colorIndex = 0;
             label_info.innerHTML = "Kruskal's Algorithm : Animation Completed, Press the button to start again!";
             animate = false;
+            // openAnswerModal(getKruskalsMstString());
+            ansModal.show();
           }
       }
       // change to next blink phase...
