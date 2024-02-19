@@ -5,6 +5,27 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
     <body>
+        <!-- The modal for showing the answers of the calculations : Starts Here  -->
+        <div class="modal fade" id="answerModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Answer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeAnswerModal()"></button>
+                </div>
+    
+                <div class="modal-body" id="answerModalBody">
+                    
+                </div>
+    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeAnswerModal()">Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        <!-- The modal for showing the answers of the calculations : Ends Here  -->
+
         <!-- The modal for taking weight of edge : Starts Here  -->
         <div class="modal fade" id="weightModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -122,6 +143,7 @@
     <script src="./Asset/Scripts/ToolHelpers/toolManager.js"></script>
     <script src="./Asset/main.js"></script>
     <script src="./Asset/Scripts/ToolHelpers/weightedEdgeManager.js"></script>
+    <script src="./Asset/Scripts/SimulationsHelper/answerModalManagement.js"></script>
     <!-- The animation Helpers  -->
     <script src="./Asset/Scripts/AnimationHelpers/KruskalsMstAnimation.js"></script>
     <!-- The Simulation Helpers  -->
