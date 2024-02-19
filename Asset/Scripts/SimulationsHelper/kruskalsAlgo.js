@@ -7,11 +7,14 @@
 // From the matrixFormation script... 
 var weightedEdges = getWeEdges();
 var totalNodes = Nodes.length;
+var KruskalsMST = "";
 
 // This will help in animation utility...
 var selectedEdgesInOrder = [];
 
 function applyKruskals() {
+    // Resetting the String for the Kruskal's MST...
+    KruskalsMST = "<h1>Below is the Kruskal's MST!<h1>";
     totalNodes = getNodes();
     // console.log("Total nodes : "+totalNodes);
 
@@ -43,6 +46,7 @@ function applyKruskals() {
             minCost+=Number(weight);
             selectedEdgesInOrder.push(weightedEdges[j]);
             // console.log(weightedEdges[j].a.label+"------"+weightedEdges[j].b.label+"\t"+weight);
+            KruskalsMST += "<br><h3>"+weightedEdges[j].a.label+"---"+weightedEdges[j].b.label+"\t"+weight+"</h3>";
         }
     }
 
@@ -121,4 +125,8 @@ function getWeEdges() {
 function getSelectedEdges() {
     let edges = selectedEdgesInOrder;
     return edges;
+}
+
+function getKruskalsMstString() {
+    return KruskalsMST;
 }
