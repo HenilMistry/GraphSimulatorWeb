@@ -148,14 +148,13 @@ function animationLoop() {
       // change to next step of animation...
       if(animationFrames%(animationSettings.stepDelay)==0) {
           animationSettings.edgeIndex++;
-          if(animationSettings.edgeIndex > animationEdges.length-1) {
+          if(animationSettings.edgeIndex > animationSettings.animationEdges.length-1) {
             animationSettings.edgeIndex = 0;
             animationSettings.nodeIndex = 0;
             animationSettings.colorIndex = 0;
             label_info.innerHTML = "Kruskal's Algorithm : Animation Completed, Press the button to start again!";
             animate = false;
-            // openAnswerModal(getKruskalsMstString());
-            ansModal.show();
+            openAnswerModal(getKruskalsMstString());
           }
       }
       // change to next blink phase...
@@ -164,8 +163,37 @@ function animationLoop() {
       }
       // animate the things on canvas...
       if(animate) {
-        animationEdges[animationSettings.edgeIndex].paint(((animationSettings.colorIndex%2)?("Red"):("Black")));
-        label_info.innerHTML = "Kruskal's Algorithm : Selecting Edge "+animationEdges[animationSettings.edgeIndex].a.label+"--"+animationEdges[animationSettings.edgeIndex].b.label+" with edge weight : "+animationEdges[animationSettings.edgeIndex].weight;
+        for(let i=0; i<animationSettings.edgeIndex; i++) {
+          animationSettings.animationEdges[i].paint("Red");
+        }
+        animationSettings.animationEdges[animationSettings.edgeIndex].paint(((animationSettings.colorIndex%2)?("Red"):("Black")));
+        label_info.innerHTML = "Kruskal's Algorithm : Selecting Edge "+animationSettings.animationEdges[animationSettings.edgeIndex].a.label+"--"+animationSettings.animationEdges[animationSettings.edgeIndex].b.label+" with edge weight : "+animationSettings.animationEdges[animationSettings.edgeIndex].weight;
+      }
+    } else if(animationSettings.animation=="Prims") {
+      // change to next step of animation...
+      if(animationFrames%(animationSettings.stepDelay)==0) {
+        animationSettings.nodeIndex++;
+        animationSettings.edgeIndex++;
+        if(animationSettings.nodeIndex > animationSettings.animationNodes.length-1 || animationSettings.edgeIndex > animationSettings.length-1) {
+          animationSettings.edgeIndex = 0;
+          animationSettings.nodeIndex = 0;
+          animationSettings.colorIndex = 0;
+          label_info.innerHTML = "Prims's Algorithm : Animation Completed, Press the button to start again!";
+          animate = false;
+          openAnswerModal(getPrimsMstString());
+        }
+      }
+      // change to next blink phase...
+      if(animationFrames%(animationSettings.blinkingDelay)==0) {
+        animationSettings.colorIndex++;
+      }
+      // animate the things on canvas...
+      if(animate) {
+        for(var i=0; i<animationSettings.edgeIndex; i++) {
+          animationSettings.animationEdges[i].paint("Red");
+        }
+        animationSettings.animationNodes[animationSettings.nodeIndex].paint(((animationSettings.colorIndex%2)?("Red"):("Green")));
+        label_info.innerHTML = "Prim's Algorithm : Exploring node : "+animationSettings.nodeIndex+" for the shortest edge!";
       }
     }
   }
