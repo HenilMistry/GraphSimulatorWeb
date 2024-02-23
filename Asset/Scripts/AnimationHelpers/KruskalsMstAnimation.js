@@ -10,6 +10,8 @@ let KruskalsAnimationSettings = {
     stepDelay: 1000,
     edgeIndex: 0,
     nodeIndex: 0,
+    animationNodes : [],
+    animationEdges : [],
     colorIndex: 0,
     animation: "Kruskals"
 };
@@ -24,9 +26,12 @@ function animateKruskal() {
     });
 
     // setting the variables in main.js script... 
+    KruskalsAnimationSettings.animationEdges = edges;
     animationEdges = edges;
     animationSettings = KruskalsAnimationSettings;
 
     // starting the animation...
     animate = true;
+    selectedNodesInOrder = [];
+    selectedEdgesInOrder = [];
 }
