@@ -13,6 +13,7 @@ var KruskalsMST = "";
 var selectedEdgesInOrder = [];
 
 function applyKruskals() {
+    selectedEdgesInOrder = [];
     // Resetting the String for the Kruskal's MST...
     KruskalsMST = "<h1>Below is the Kruskal's MST!<h1>";
     totalNodes = getNodes();

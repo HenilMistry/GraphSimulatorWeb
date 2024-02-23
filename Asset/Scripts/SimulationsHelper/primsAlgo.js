@@ -7,17 +7,24 @@
 // From the matrixFormation script... 
 var weightedGraphMatrix = getWeMatrix();
 
+// list to store constructed MST...
+let tree = [];
+// list to store key value pairs to pick minimum edge...
+let key = [];
+// to represented set of vertices included in MST...
+let mstSet = [];
+var PrimsMST = "";
+
+// This will help in animation utility...
+var selectedNodesInOrder = [];
+
 /**
  * This function will apply the prims algorithm...
  */
 function applyPrims() {
+    selectedEdgesInOrder = [];
+    selectedNodesInOrder = [];
     weightedGraphMatrix = getWeMatrix();
-    // list to store constructed MST...
-    let tree = [];
-    // list to store key value pairs to pick minimum edge...
-    let key = [];
-    // to represented set of vertices included in MST...
-    let mstSet = [];
 
     // init all keys...
     for(var i = 0; i<getNodes(); i++) {
@@ -34,6 +41,8 @@ function applyPrims() {
         // console.log("\nSelected vertex : "+u);
         // add the picked vertex to the MST...
         mstSet[u] = true;
+        // add the picked vertex to selectedNodesInOrder...
+        selectedNodesInOrder.push(u);
 
         // update the key value and parent index 
         // of the adjecent vertices of the picked vertex.
@@ -55,6 +64,7 @@ function applyPrims() {
     }
 
     printPrimsMST(tree, weightedGraphMatrix);
+    animatePrims();
 }
 
 /**
@@ -69,6 +79,29 @@ function printPrimsMST(tree, matrix) {
     for(var i=1; i<getNodes(); i++) {
         console.log(tree[i] + " - " + i + "\t" + matrix[i][tree[i]]);
     }
+}
+
+/**
+ * This function will give you the Prim's MST,
+ * if the Prim's Algorithm has been applied before.
+ * @returns String : for Prim's MST
+ */
+function getPrimsMstString() {
+    PrimsMST = "<h1>Below is the Prim's MST!</h1><br>";
+    for(var i=1; i<getNodes(); i++) {
+        PrimsMST += "<h3>"+tree[i]+" - "+i+"\t"+weightedGraphMatrix[i][tree[i]]+"</h3><br>";
+        selectedEdgesInOrder.push(new WeightedEdge(Nodes[tree[i]],Nodes[i],"*",c));
+    }
+    return PrimsMST;
+}
+
+/**
+ * This function returns the selection of nodes
+ * for animation simulation purpose.
+ * @returns The in-order selection of nodes!
+ */
+function getSelectedNodes() {
+    return selectedNodesInOrder;
 }
 
 /**
