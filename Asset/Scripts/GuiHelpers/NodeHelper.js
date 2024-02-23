@@ -20,7 +20,16 @@ class Node {
         this.c.closePath();
     }
 
+    animate(fillColor) {
+        this.color = fillColor;
+        this.draw();
+    }
+
     update() {
         this.draw();
+    }
+
+    paint(fillColor) {
+        this.animate(fillColor);
     }
 }
