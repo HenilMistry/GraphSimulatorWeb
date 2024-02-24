@@ -115,8 +115,8 @@
                     <div class="container_tool">
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-primary" onclick="formMatrix()" id="matButton">Matrix Formation</button>
-                            <button type="button" class="btn btn-primary" onclick="" id="">Prim's MST</button>
-                            <button type="button" class="btn btn-primary" onclick="" id="">Kruskal's MST</button>
+                            <button type="button" class="btn btn-primary" onclick="formPrimsMST()" id="">Prim's MST</button>
+                            <button type="button" class="btn btn-primary" onclick="formKruskalsMST()" id="">Kruskal's MST</button>
                         </div>
                     </div>
                 </div>
@@ -128,8 +128,8 @@
                     <!-- Container for Three Elements Only -->
                     <div class="container_tool">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary" onclick="applyPrims()">Prims Algorithm</button>
-                            <button type="button" class="btn btn-primary" onclick="applyKruskals()">Kruskal's Algorithm</button>
+                            <button type="button" class="btn btn-primary" onclick="applyPrims(true)">Prims Algorithm</button>
+                            <button type="button" class="btn btn-primary" onclick="applyKruskals(true)">Kruskal's Algorithm</button>
                         </div>
                     </div>
                 </div>
@@ -162,6 +162,8 @@
     <script src="./Asset/Scripts/AnimationHelpers/PrimsMstAnimation.js"></script>
     <!-- The functionalities  -->
     <script src="./Asset/Scripts/Functionalities/matrixFormation.js"></script>
+    <script src="./Asset/Scripts/Functionalities/primsMstFormation.js"></script>
+    <script src="./Asset/Scripts/Functionalities/kruskalsMstFormation.js"></script>
     <!-- The Simulation Helpers  -->
     <script src="./Asset/Scripts/SimulationsHelper/primsAlgo.js"></script>
     <script src="./Asset/Scripts/SimulationsHelper/kruskalsAlgo.js"></script>
