@@ -6,9 +6,9 @@
 
 ## Features
 - Visualize graphs with nodes and edges.
-- Add nodes interactively.
+- Add nodes interactively.<br>
   ![Adding Nodes](./Asset/gifs/GS-addingNodes.gif)
-- Adding edges interactively.
+- Adding edges interactively.<br>
   ![Adding Edges](./Asset/gifs/GS-addingWeightedEdge.gif)
 - Simulate Prim's algorithm to find the minimum spanning tree.
   ![Prim's Algo Animation](./Asset/gifs/GS-primsAlgo.gif)
@@ -35,4 +35,4 @@ To run this project locally, follow these steps:
 Contributions are welcome! If you find any bugs or want to suggest improvements, please open an issue or submit a pull request.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
