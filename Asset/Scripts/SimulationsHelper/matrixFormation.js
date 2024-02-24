@@ -9,6 +9,7 @@ var nodes = Nodes.length; // From main.js script
 // getting the modal...
 const bModel = new bootstrap.Modal('#matModal');
 const matModelBody = document.getElementById('matModalBody');
+let final_string = "";
 
 /**
  * This function will form the matrix,
@@ -20,26 +21,48 @@ function formMatrix() {
         alert("There are no nodes on the canvas!");
     } else { // generate the marix in form of table..    
         let matrix = getUdMatrix();
-        // TODO: print the matrix in user redable formate ...
         // clear previous result..
-        matModelBody.innerHTML = "";
+        final_string = "";
+        final_string = "<h1>Matrix for a graph:</h1>"
+        final_string += "<table class='table table-hover table-striped table-primary'>";
+        final_string += "<thead><tr><th scope='col'>#</th>";
+
+        // for making table header...
+        for(var i=0; i<matrix.length; i++) {
+            final_string += "<th scope='col'> Node "+i+"</th>";
+        }
+        final_string += "</tr></thead><tbody>";
+
         // show it in form of table...
         for(var i=0; i<matrix.length; i++) {
+            final_string += "<tr><th scope='row'> Node "+i+"</th>";
             for(var j=0; j<matrix[i].length; j++) {
-                matModelBody.innerHTML += matrix[i][j]+"\t";
+                final_string += "<td>"+matrix[i][j]+"</td>";
             }
-            matModelBody.innerHTML += "<br>";
+            final_string += "</tr>";
         }
-        matModelBody.innerHTML += "<br>";
+        final_string += "</tbody></table>";
+
+        final_string += "<br><h1>Matrix for wighted graph:</h1>";
+        final_string += "<table class='table table-hover table-striped table-primary'>";
+        final_string += "<thead><tr><th scope='col'>#</th>";
         matrix = getWeMatrix();
+        // for making table header...
+        for(var i=0; i<matrix.length; i++) {
+            final_string += "<th scope='col'> Node "+i+"</th>";
+        }
+        final_string += "</tr></thead><tbody>";
+
         // show it in form of table...
         for(var i=0; i<matrix.length; i++) {
+            final_string += "<tr><th scope='row'> Node "+i+"</th>";
             for(var j=0; j<matrix[i].length; j++) {
-                matModelBody.innerHTML += matrix[i][j]+"\t";
+                final_string += "<td>"+matrix[i][j]+"</td>";
             }
-            matModelBody.innerHTML += "<br>";
+            final_string += "</tr>";
         }
-        // TODO: print the matrix in user redable formate ... (ENDS)
+        final_string += "</tbody></table>";
+        matModelBody.innerHTML = final_string;
         bModel.show();
     }
 }
