@@ -12,10 +12,13 @@ var KruskalsMST = "";
 // This will help in animation utility...
 var selectedEdgesInOrder = [];
 
-function applyKruskals() {
+function applyKruskals(showAnimation) {
     selectedEdgesInOrder = [];
     // Resetting the String for the Kruskal's MST...
     KruskalsMST = "<h1>Below is the Kruskal's MST!<h1>";
+    KruskalsMST += "<table class='table table-hover table-striped table-primary'>";
+    KruskalsMST += "<thead><tr><th>Edge</th><th>Edge Weight</th></tr></thead><tbody>";
+
     totalNodes = getNodes();
     // console.log("Total nodes : "+totalNodes);
 
@@ -46,14 +49,19 @@ function applyKruskals() {
             unionSet(v1,v2,parent,rank,totalNodes);
             minCost+=Number(weight);
             selectedEdgesInOrder.push(weightedEdges[j]);
+            // reference string...
             // console.log(weightedEdges[j].a.label+"------"+weightedEdges[j].b.label+"\t"+weight);
-            KruskalsMST += "<br><h3>"+weightedEdges[j].a.label+"---"+weightedEdges[j].b.label+"\t"+weight+"</h3>";
+            // KruskalsMST += "<br><h3>"+weightedEdges[j].a.label+"---"+weightedEdges[j].b.label+"\t"+weight+"</h3>";
+            KruskalsMST += "<tr><td>"+weightedEdges[j].a.label+"---"+weightedEdges[j].b.label+"</td><td>"+weight+"</td></tr>";
         }
     }
+    KruskalsMST += "<tr><td><b>Cost of MST</b></td><td><b>"+minCost+"</b></td></tr></tbody></table>";
 
     console.log("Cost of MST : "+minCost);
     console.log(selectedEdgesInOrder);
-    animateKruskal();
+    if(showAnimation) {
+        animateKruskal();
+    }
 }
 
 /**

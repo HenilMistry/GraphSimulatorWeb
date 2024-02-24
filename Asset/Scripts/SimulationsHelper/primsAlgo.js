@@ -18,10 +18,6 @@ var PrimsMST = "";
 // This will help in animation utility...
 var selectedNodesInOrder = [];
 
-function applyPrims() {
-    applyPrims(true);
-}
-
 /**
  * This function will apply the prims algorithm...
  */
