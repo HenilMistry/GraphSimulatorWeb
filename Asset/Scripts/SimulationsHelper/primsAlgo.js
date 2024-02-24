@@ -18,10 +18,14 @@ var PrimsMST = "";
 // This will help in animation utility...
 var selectedNodesInOrder = [];
 
+function applyPrims() {
+    applyPrims(true);
+}
+
 /**
  * This function will apply the prims algorithm...
  */
-function applyPrims() {
+function applyPrims(showAnimation) {
     selectedEdgesInOrder = [];
     selectedNodesInOrder = [];
     weightedGraphMatrix = getWeMatrix();
@@ -64,7 +68,9 @@ function applyPrims() {
     }
 
     printPrimsMST(tree, weightedGraphMatrix);
-    animatePrims();
+    if(showAnimation) {
+        animatePrims(); // it will only show the animation if it has been said to...
+    }
 }
 
 /**
@@ -87,11 +93,20 @@ function printPrimsMST(tree, matrix) {
  * @returns String : for Prim's MST
  */
 function getPrimsMstString() {
+    let cost = 0;
     PrimsMST = "<h1>Below is the Prim's MST!</h1><br>";
+    PrimsMST += "<table class='table table-hover table-striped table-primary'>";
+    PrimsMST += "<thead><tr><th>Edge</th><th>Edge Weight</th></tr></thead><tbody>";
+
     for(var i=1; i<getNodes(); i++) {
-        PrimsMST += "<h3>"+tree[i]+" - "+i+"\t"+weightedGraphMatrix[i][tree[i]]+"</h3><br>";
+        // reference string...
+        // PrimsMST += "<h3>"+tree[i]+" - "+i+"\t"+weightedGraphMatrix[i][tree[i]]+"</h3><br>";
+        PrimsMST += "<tr><td>"+tree[i]+" - "+i+"</td><td>"+weightedGraphMatrix[i][tree[i]]+"</td></tr>";
+        cost += Number(weightedGraphMatrix[i][tree[i]]);
         selectedEdgesInOrder.push(new WeightedEdge(Nodes[tree[i]],Nodes[i],"*",c));
     }
+    PrimsMST += "<tr><td><b>Cost of MST</b></td><td><b>"+cost+"</b></td></tr></tbody></table>";
+
     return PrimsMST;
 }
 
